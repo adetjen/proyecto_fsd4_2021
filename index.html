@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <main>
+        <div class="header"></div>
+        <div class="aside"><img src="./logo.png" alt="logo Laaca" width="400" height="120"></div>
+        <div class="nav">Listado de productos</div>
+        <div class="main">
+            <input type="text" id="entrada-texto" /> 
+            <button id="add-button">Agregar producto al seguimiento</button>
+            <button id="reset-button">Eliminar registro</button>
+            <main class = "container" id="page-main"></main>
+
+        </div>
+        <div class="footer">
+            <li>Total de productos seguidos</li>
+            <li>Ultima actualizacion</li>
+            <li> Frecuencia de update del algoritmo
+                <select>
+                    <option value="1hr">1 hora</option>
+                    <option value="2hrs">2 horas</option>
+                    <option value="3hrs">3 horas</option>
+                    <option value="6hrs">6 horas</option>
+                    <option value="12hrs">12 horas</option>
+                </select>
+            </li>
+            <li><button class="boton_update_alg"> Actualizar algoritmo manualmente</button></li>
+        </div>
+    </main>
+        
+
+    <script>
+        
+    // Agregado de botones y cuadro de texto para cargar productos al seguimiento
+
+    const main = document.getElementById("page-main");
+    const input = document.getElementById("extrada-texto");
+    const addButton = document.getElementById("add-button");
+    const resetButton = document.getElementById("reset-button");
+
+    const agregarElemento = function () {
+
+        if(input.value === "") return
+        
+        const nuevoElemento = document.createElement("p");
+        nuevoElemento.textContent = input.value;
+
+        input.value = "";
+
+        main.appendChild(nuevoElemento);
+    }
+
+    const quitarElemento = ()=> {
+        main.textContent = "";
+    }
+
+    addButton.addEventListener("click", agregarElemento)
+    resetButton.addEventListener("click", quitarElemento)
+
+
+    </script>
+</body>
+</html>
