@@ -25,6 +25,8 @@ Se pueden definir hasta 5 proveedores de precio para comparar (uno va a ser ML)
 
 En la pantalla de inicio se mostraran los productos de a un fila por producto, con una ultima celda que defina quien es el precio mas barato.
 
+Link de configuracion de la API de Woocommerce https://www.npmjs.com/package/@woocommerce/woocommerce-rest-api
+
 3. Objetivo Etapa 2
 
 En la etapa 2 se trata de automatizar los precios en la web de Laaca utilziando la API de woocommerce para que en funcion del precio del cada producto busque el mas barato, en funcion de quien es el mas barato toma las siguientes decisiones;
