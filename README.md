@@ -1,13 +1,17 @@
 # proyecto_fsd4_2021
 
-
 1. Forma de ejecución
 
 Se ejecuta index.html para acceder a la aplicación
 
 2. Objetivo Etapa 1
 
-Se trata de una web de seguimiento de precio. 
+    Se trata de una web para listar productos de la web https://laaca.com.uy, cargando nombre, precio, sku y precio mínimo, para cada producto además se carga su equivalente en 3 diferentes proveeedores, nombre del proveedor y precio.
+    En la etapa 1 los productos, sku y precios se cargan manuales, en la etapa 2 se conectará la API de la web de laaca.com.uy a la tabla (solo los productos que se seleccionados) además de importar los precios de la competencia de forma automática.
+
+3. Objetivo Etapa 2
+
+Se trata de una web de seguimiento y corrección de precios.
 
 Cargamos un producto de la página web de https://laaca.com.uy utilizando la API REST de Woocommerce con una librería de NODE JS, eso nos devuelve un array de todos los productos publicados (excluye los en borrador), un campo de búsqueda por nombre de producto, seleccionamos el que buscamos y nos devuelve;
                                                                                                     precio (precio normal o precio oferta si existe)
@@ -21,13 +25,12 @@ Luego tenemos varios "proveedores" de precios, para cada proveedor defininos;
                                                                             Link producto
                                                                             precio
                                                                             
-Se pueden definir hasta 5 proveedores de precio para comparar (uno va a ser ML)
+Se pueden definir hasta 3 proveedores de precio para comparar (uno va a ser ML)
 
-En la pantalla de inicio se mostraran los productos de a un fila por producto, con una ultima celda que defina quien es el precio mas barato.
+En la pantalla de inicio se mostraran los productos de a un fila por producto, en la última celda se mostrará el resultado de si estamos ganando en precio para cada producto o si estamos perdiendo.
 
 Link de configuracion de la API de Woocommerce https://www.npmjs.com/package/@woocommerce/woocommerce-rest-api
 
-3. Objetivo Etapa 2
 
 En la etapa 2 se trata de automatizar los precios en la web de Laaca utilziando la API de woocommerce para que en funcion del precio del cada producto busque el mas barato, en funcion de quien es el mas barato toma las siguientes decisiones;
 
@@ -52,6 +55,8 @@ En este caso se fija el menor precio y baja el precio de Laaca hasta un 2% del m
 La comprobacion y correccion se ejecuta cada 1hr (es configurable el lapso de actualizacion)
 
 Los proveedores cuyo precio no pueda ser actualizado cambian el estilo de sus datos colocando en color rojo el texto, se utiliza igual el ultimo valor de precio guardado.
+
+El campo "Estado" resulta de resolver el algoritmo y que el precio de Laaca sea el menor, en ese caso coloca "Ganando", sino "Perdiendo".
 
 4. Consideraciones
 

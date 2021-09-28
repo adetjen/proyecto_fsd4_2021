@@ -1,7 +1,7 @@
 const WooCommerceRestApi = require("@woocommerce/woocommerce-rest-api").default;
 
 const api = new WooCommerceRestApi({
-  url: "https://laaca.com.uy/test_int",
+  url: "https://laaca.com.uy/test_int", // sitio copia, solo lectura
   consumerKey: "ck_0f0188aae6cb1c62932268695191615ac0ac4378",
   consumerSecret: "cs_827e972257ecf49e5fb22901340111b1084a86dd",
   version: "wc/v3"
@@ -17,7 +17,7 @@ api.get("products", {
       // Successful request
       console.log("Response Status:", response.status);
       console.log("Response Headers:", response.headers);
-      console.log("Response Data:", response.data);
+      console.log("Response Data:", response.data); // acá es donde están los datos
       console.log("Total of pages:", response.headers['x-wp-totalpages']);
       console.log("Total of items:", response.headers['x-wp-total']);
     })

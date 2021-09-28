@@ -1,74 +1,83 @@
 <!DOCTYPE html>
-<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-balham.css">
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-alpine.css">
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-alpine-dark.css">
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-balham-dark.css">
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-material.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" /> <!-- fuente para usar en ag-theme-material -->
     <link rel="stylesheet" href="./style.css">
-    <script src="script.js"></script>
+    
 </head>
 <body>
 
     <main>
         <div class="header"></div>
-        <div class="aside"><img src="./logo.png" alt="logo Laaca" width="400" height="120"></div>
-        <div class="nav">Listado de productos</div>
-        <div class="main">
-          <input type="text" id="entrada-texto" /> 
-            <button id="add-button">Agregar producto al seguimiento</button>
-            <button id="reset-button">Eliminar registro</button>
-            <main class = "container" id="page-main"></main>
+        <div class="aside"><img src="./images/logo.png" alt="logo Laaca" width="400" height="120"></div>
     </main>   
 
-    document.write("Response Data:", response.data[0].nombre);
+  <h1>Listado de productos en seguimiento</h1>
+  <div id="myGrid" style="height: 800px; width:100%;" class="ag-theme-alpine"></div>
+  
+  <script type="text/javascript" charset="utf-8">
+    const columnDefs = [
+        {headerName: 'Producto', field: 'producto', width: 400, editable: true},
+        {headerName: 'SKU', field: 'sku', width: 100, editable: true},
+        {headerName: 'Precio', field: 'price', width: 100, editable: true},
+        {headerName: 'Precio Minimo', field: 'min_price', width: 150, editable: true},
+        {headerName: 'Competidor 1', field: 'competidor_1', width: 250, editable: true},
+        {headerName: 'Precio 1', field: 'price_1', width: 100, editable: true},
+        {headerName: 'Competidor 2', field: 'competidor_2', width: 250, editable: true},
+        {headerName: 'Precio 2', field: 'price_2', width: 100, editable: true},
+        {headerName: 'Competidor 3', field: 'competidor_3', width: 250, editable: true},
+        {headerName: 'Precio 3', field: 'price_3', width: 100, editable: true},
+        {headerName: 'Estado', field: 'estado', width: 150, editable: true},
+        {headerName: 'Observaciones', field: 'observa', width: 500, editable: true},
+    ];
+    let rowData = [
+        {producto: 'Consola Nintendo Switch Neon', sku: '20001', price: '599', min_price: '589', competidor_1: 'Carlitos', price_1: 615, competidor_2: 'Pedrito', price_2: 615, competidor_3: 'Juancito', price_3: 615, estado: 'Ganando'},
+        {producto: 'Consola Nintendo Switch Gris', sku: '20002', price: '599', min_price: '589', competidor_1: 'Carlitos', price_1: 629, competidor_2: 'Pedrito', price_2: 615, competidor_3: 'Carlitos', price_3: 615, estado: 'Ganando'},
+        {producto: 'Consola XBOX Series S', sku: '25063', price: '739', min_price: '715', competidor_1: 'Carlitos', price_1: 769, competidor_2: 'Pedrito', price_2: 789, competidor_3: 'Juancito', price_3: 789, estado: 'Ganando'},
+        {producto: 'Consola XBOX Series X', sku: '25066', price: '1299', min_price: '1199', competidor_1: 'Carlitos', price_1: 1459, competidor_2: 'Pedrito', price_2: 1329, competidor_3: 'Carlitos', price_3: 1359, estado: 'Perdiendo'},
+        {producto: 'Consola Playstation 5 con disco', sku: '25069', price: '1499', min_price: '1385', competidor_1: 'Carlitos', price_1: 1399, competidor_2: 'Carlitos', price_2: 1489, competidor_3: 'Juancito', price_3: 1699, estado: 'Perdiendo' },
+        {producto: 'Tarjeta de video GTX 1650', sku: '25075', price: '449', min_price: '405', competidor_1: 'Carlitos', price_1: 469, competidor_2: 'Carlitos', price_2: 475, competidor_3: 'Carlitos', price_3: 439},
+        {producto: 'Tarjeta de video GT 1030', sku: '25089', price: '158', min_price: '125', competidor_1: 'Carlitos', price_1: 165, competidor_2: 'Carlitos', price_2: 179, competidor_3: 'Juancito', price_3: 159, estado: 'Perdiendo'},
+        {producto: 'Tarjeta de video RTX 3060', sku: '2568', price: '1189', min_price: '1042', competidor_1: 'Carlitos', price_1: 1199, competidor_2: 'Carlitos', price_2: 1215, competidor_3: 'Carlitos', price_3: 1359},
+        {producto: 'Juego FIFA 22 PS5', sku: '25458', price: '85', min_price: '74', competidor_1: 'Carlitos', price_1: 89, competidor_2: 'Carlitos', price_2: 95, competidor_3: 'Carlitos', price_3: 98},
+        {producto: 'Auricular Steelseries Arctis 3', sku: '2890', price: '129', min_price: '115', competidor_1: 'Carlitos', price_1: 139, competidor_2: 'Carlitos', price_2: 138, competidor_3: 'Juancito', price_3: 145},
+        {producto: 'Teclado Redragon K552 Kumara', sku: '7899', price: '77', min_price: '68', competidor_1: 'Carlitos', price_1: 82, competidor_2: 'Carlitos', price_2: 84, competidor_3: 'Juancito', price_3: 79},
+        {producto: 'PC Gamer Intel i3 10100F GT 1030 16Gb RAM 1Tb HDD', sku: '15836', price: '869', min_price: '746', competidor_1: 'Carlitos', price_1: 899, competidor_2: 'Carlitos', price_2: 915, competidor_3: 'Carlitos', price_3: 925},
+        {producto: 'PC Gamer Intel i5 10400F GTX 1650 16Gb RAM 1Tb SSD', sku: '1236', price: '1189', min_price: '1049', competidor_1: 'Carlitos', price_1: 1289, competidor_2: 'Carlitos', price_2: 1359, competidor_3: 'Carlitos', price_3: 1369},
+    ];
+    let gridOptions = {
+        columnDefs: columnDefs,
+        enableSorting: true,
+        enableFilter: true,
+        rowData: rowData,        
+        columnHoverHighlight: true,
 
-    </div>
-        <div class="footer">
-            <li>Total de productos seguidos</li>
-            <li>Ultima actualizacion</li>
-            <li> Frecuencia de update del algoritmo
-                <select>
-                    <option value="1hr">1 hora</option>
-                    <option value="2hrs">2 horas</option>
-                    <option value="3hrs">3 horas</option>
-                    <option value="6hrs">6 horas</option>
-                    <option value="12hrs">12 horas</option>
-                </select>
-            </li>
-            <li><button class="boton_update_alg"> Actualizar algoritmo manualmente</button></li>
-    </div>
-    
+    };
+    const eGridDiv = document.querySelector('#myGrid');
+    new agGrid.Grid(eGridDiv, gridOptions);
+</script>
 
-    <script>
-        
-    // Agregado de botones y cuadro de texto para cargar productos al seguimiento
+</div>
+<div class="footer">
+    <li>Total de productos seguidos</li>
+    <li>Ultima actualizacion</li>
+    <li> Frecuencia de update del algoritmo
+        <select>
+            <option value="1hr">1 hora</option>
+            <option value="2hrs">2 horas</option>
+            <option value="3hrs">3 horas</option>
+            <option value="6hrs">6 horas</option>
+            <option value="12hrs">12 horas</option>
+        </select>
+    </li>
+    <li><button class="boton_update_alg"> Actualizar algoritmo manualmente</button></li>
 
-    const main = document.getElementById("page-main");
-    const input = document.getElementById("extrada-texto");
-    const addButton = document.getElementById("add-button");
-    const resetButton = document.getElementById("reset-button");
-
-    const agregarElemento = function () {
-
-        if(input.value === "") return
-        
-        const nuevoElemento = document.createElement("p");
-        nuevoElemento.textContent = input.value;
-
-        input.value = "";
-
-        main.appendChild(nuevoElemento);
-    }
-
-    const quitarElemento = ()=> {
-        main.textContent = "";
-    }
-
-    addButton.addEventListener("click", agregarElemento)
-    resetButton.addEventListener("click", quitarElemento)
-
-
-    </script>
+</div>
 </body>
 </html>

@@ -1,51 +1,22 @@
 main {
-    display: grid;
-    grid-template-columns: fit-content(40%);
-    grid-template-rows: 60px 150px 1000px 200px;
-    grid-gap: 0px;
-    font-size: 26px;
-    font-weight: bold;
-    font-family: 'Poppins', sans-serif;
+    background-color: rgb(227, 233, 235);
+    text-align: center;
+    color: black;
+    padding: 20px 20px;
 }
 
-div {
-    background-color: white;
-    color: white;
+aside {
+    background-color:rgb(207, 183, 103);
+    text-align: left;
+    padding: 20px 0;
 }
 
-.header {
+header {
     background-color: rgb(88, 132, 173);
     text-align: right;
     text-indent: 30px;
     padding: 40px 0;
-    grid-column: 1 / 5;
-}
-
-.aside {
-    background-color:rgb(251, 251, 251);
-    text-align: left;
-    padding: 20px 0;
-    grid-column: 1 / 2;
-
-}
-
-.nav {
-    background-color: rgb(251, 251, 251);
-    text-align: center;
-    color: black;
-    padding: 60px 0;
-    grid-column: 2 / 5;
-
-}
-
-.main {
-    background-color: rgb(255, 255, 255);
-    text-align: center;
-    color: black;
-    padding: 20px 20px;
-    grid-column: 1 / 5;
-
-}
+}  
 
 .footer {
     background-color: rgb(164, 209, 235);
@@ -54,26 +25,24 @@ div {
     font-size: 16px;
     font-weight: lighter;
     padding: 10px 10px;
-    grid-column: 1 / 5;
     line-height: 30px;
-
 }
-
+    
 .footer li:hover {
     font-weight:bold;
     background-color: rgb(53, 53, 52);
     color: white;
     line-height: 35px;
 }
-
+    
 .boton_update_alg {
     font-weight:lighter;
     font-size:16px;
     background-color: whitesmoke;
     color: black
-    transition-property: width;
-    BORDER: rgb(128,128,128) 1px
+    border: 1px;
 }
+    
 .boton_update_alg:hover {
-    width:40%;
+    width: 40%;
 }
